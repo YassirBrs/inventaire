@@ -38,6 +38,7 @@ public class Db2excel {
             sheet.autoSizeColumn(3);
             sheet.autoSizeColumn(4);
             sheet.autoSizeColumn(5);
+            sheet.autoSizeColumn(6);
 
             writeHeaderLine(sheet);
 
@@ -79,16 +80,20 @@ public class Db2excel {
 
 
         headerCell = headerRow.createCell(3);
-        headerCell.setCellValue("Quantity");
+        headerCell.setCellValue("Place");
         sheet.autoSizeColumn(3);
 
         headerCell = headerRow.createCell(4);
-        headerCell.setCellValue("Buy Price");
+        headerCell.setCellValue("Quantity");
         sheet.autoSizeColumn(4);
 
         headerCell = headerRow.createCell(5);
-        headerCell.setCellValue("Sell Price");
+        headerCell.setCellValue("Buy Price");
         sheet.autoSizeColumn(5);
+
+        headerCell = headerRow.createCell(6);
+        headerCell.setCellValue("Sell Price");
+        sheet.autoSizeColumn(6);
 
     }
 
@@ -100,9 +105,7 @@ public class Db2excel {
             float n = result.getInt("id");
             String description = result.getString("description");
             String name = result.getString("name");
-//            Category cc=pr.getCategory(result.getInt("categoryId"));
-//            String category=cc.getType();
-//            int category=result.getInt("categoryId");
+            String place = result.getString("place");
             int quantity = result.getInt("quantity");
             double priceBuy =result.getDouble("priceBuy");
             double priceSell =result.getDouble("priceSell");
@@ -119,6 +122,8 @@ public class Db2excel {
             cell = row.createCell(columnCount++);
             cell.setCellValue(name);
 
+            cell = row.createCell(columnCount++);
+            cell.setCellValue(place);
 
             cell = row.createCell(columnCount++);
             cell.setCellValue(quantity);

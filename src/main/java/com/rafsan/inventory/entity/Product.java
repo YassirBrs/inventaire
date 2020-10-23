@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "products")
 public class Product implements Serializable {
- 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -27,13 +27,15 @@ public class Product implements Serializable {
     private double priceSell;
     @Column(name = "quantity")
     private int quantity;
+    @Column(name = "place")
+    private String place;
     @Column(name = "description")
     private String description;
-    
+
     @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "categoryId")
     private Category category;
-    
+
     @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "supplierId")
     private Supplier supplier;
@@ -41,25 +43,35 @@ public class Product implements Serializable {
     public Product() {
     }
 
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
     public Product(long id, String productName, double priceBuy, double priceSell,
-            int quantity, String description, Category category, Supplier supplier) {
+                   int quantity, String place, String description, Category category, Supplier supplier) {
         this.id = id;
         this.productName = productName;
         this.priceBuy = priceBuy;
         this.priceSell = priceSell;
         this.quantity = quantity;
+        this.place = place;
         this.description = description;
         this.category = category;
         this.supplier = supplier;
     }
 
     public Product(String productName, double priceBuy, double priceSell,
-            int quantity, String description, Category category, Supplier supplier) {
+                   int quantity, String place, String description, Category category, Supplier supplier) {
         this.productName = productName;
         this.priceBuy = priceBuy;
         this.priceSell = priceSell;
         this.quantity = quantity;
         this.description = description;
+        this.place = place;
         this.category = category;
         this.supplier = supplier;
     }
@@ -130,13 +142,14 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        return "Product{" + "id=" + id + 
-                ", productName=" + productName + 
+        return "Product{" + "id=" + id +
+                ", productName=" + productName +
                 ", priceBuy=" + priceBuy +
                 ", priceSell=" + priceSell +
                 ", quantity=" + quantity +
-                ", description=" + description + 
-                ", category=" + category + 
+                ", place=" + place +
+                ", description=" + description +
+                ", category=" + category +
                 ", supplier=" + supplier + '}';
     }
 }

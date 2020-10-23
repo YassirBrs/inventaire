@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="760.0" stylesheets="@../styles/admin.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rafsan.inventory.controller.product.ProductController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="760.0" stylesheets="@../styles/admin.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rafsan.inventory.controller.product.ProductController">
    <children>
       <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="760.0" styleClass="hbox-top-background">
          <children>
@@ -67,6 +67,11 @@
                               </Pane>
                            </children>
                         </HBox>
+                        <ImageView fitHeight="283.0" fitWidth="442.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: 400;">
+                           <image>
+                              <Image url="@../images/stock.PNG" />
+                           </image>
+                        </ImageView>
 
                         <TableView fx:id="productTable" minHeight="-Infinity" minWidth="-Infinity" prefHeight="205.0" prefWidth="740.0" VBox.vgrow="ALWAYS">
                           <columns>
@@ -74,6 +79,7 @@
                             <TableColumn fx:id="categoryColumn" prefWidth="75.0" text="Category" />
                               <TableColumn fx:id="supplierColumn" prefWidth="75.0" text="Supplier" />
                               <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
+                              <TableColumn fx:id="placeColumn" prefWidth="75.0" text="Place" />
                               <TableColumn fx:id="priceBuyColumn" prefWidth="75.0" text="Price Buy" />
                               <TableColumn fx:id="priceSellColumn" prefWidth="75.0" text="Price Sell" />
                               <TableColumn fx:id="quantityColumn" prefWidth="75.0" text="Quantity" />

@@ -25,7 +25,7 @@ import javafx.stage.Stage;
 public class AddController implements Initializable, ProductInterface {
 
     @FXML
-    private TextField nameField, priceBuyField,priceSellField, quantityField;
+    private TextField nameField, priceBuyField,priceSellField, quantityField,placeField;
     @FXML
     private TextArea descriptionArea;
     @FXML
@@ -59,6 +59,7 @@ public class AddController implements Initializable, ProductInterface {
                     Double.parseDouble(priceBuyField.getText()),
                     Double.parseDouble(priceSellField.getText()),
                     Integer.parseInt(quantityField.getText()),
+                    placeField.getText(),
                     descriptionArea.getText(),
                     category,
                     supplier
@@ -84,6 +85,7 @@ public class AddController implements Initializable, ProductInterface {
         priceBuyField.setText("");
         priceSellField.setText("");
         quantityField.setText("");
+        placeField.setText("");
         descriptionArea.setText("");
         categoryBox.valueProperty().setValue(null);
     }
@@ -106,8 +108,11 @@ public class AddController implements Initializable, ProductInterface {
             errorMessage += "No valid quantity!\n";
         }
 
+        if (placeField.getText() == null || placeField.getText().length() == 0) {
+            errorMessage += "No valid place!\n";
+        }
         if (descriptionArea.getText() == null || descriptionArea.getText().length() == 0) {
-            errorMessage += "No email description!\n";
+            errorMessage += "No valid description!\n";
         }
 
         if (categoryBox.getSelectionModel().isEmpty()) {

@@ -1,5 +1,6 @@
 package com.rafsan.inventory.controller.report;
 
+import com.rafsan.inventory.controller.pos.ConfirmController;
 import com.rafsan.inventory.entity.Invoice;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -42,7 +43,7 @@ public class ViewController implements Initializable {
     
     @FXML
     public void handlePrint(ActionEvent event) {
-
+//        new ConfirmController().doneAction(event);
         
     }
     
