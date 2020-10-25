@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 29 sep. 2020 à 17:53
+-- Généré le : Dim 25 oct. 2020 à 14:44
 -- Version du serveur :  10.4.11-MariaDB
 -- Version de PHP : 7.4.2
 
@@ -109,7 +109,8 @@ INSERT INTO `invoices` (`id`, `employeeId`, `total`, `vat`, `discount`, `payable
 ('1600175598948', 2, 3300, 82.5, 5, 3377.5, 5000, 1622.5, '2020-09-15 14:13:18'),
 ('1600183804988', 2, 200, 5, 5, 200, 300, 100, '2020-09-15 16:30:05'),
 ('1600958997841', 2, 100, 2.5, 5, 97.5, 100, 2.5, '2020-09-24 15:49:57'),
-('1600968861315', 2, 650, 16.25, 5, 661.25, 700, 38.75, '2020-09-24 18:34:21');
+('1600968861315', 2, 650, 16.25, 5, 661.25, 700, 38.75, '2020-09-24 18:34:21'),
+('1601479911350', 2, 100, 2.5, 5, 97.5, 100, 2.5, '2020-09-30 16:31:51');
 
 -- --------------------------------------------------------
 
@@ -125,6 +126,7 @@ CREATE TABLE `products` (
   `priceBuy` double NOT NULL,
   `priceSell` double NOT NULL,
   `quantity` int(11) NOT NULL,
+  `place` varchar(100) NOT NULL,
   `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -132,17 +134,19 @@ CREATE TABLE `products` (
 -- Déchargement des données de la table `products`
 --
 
-INSERT INTO `products` (`id`, `categoryId`, `supplierId`, `name`, `priceBuy`, `priceSell`, `quantity`, `description`) VALUES
-(1, 4, 1, 'Fridge', 165, 180, 47, 'Auto Matic Fridge'),
-(2, 4, 1, 'Washing Machine', 120, 150, 144, 'Auto-Matic Washing Machine'),
-(3, 1, 2, 'Iphone X', 590, 710, 33, 'Iphone X 64Go '),
-(4, 2, 2, 'Iphone 11 Pro Max', 1200, 1500, 38, 'Iphone 11 Pro Max 256 Go'),
-(5, 3, 3, 'Power Light', 70, 100, 93, 'Freshness Cream'),
-(6, 3, 3, 'Oil Clear', 160, 200, 294, 'Face Wash'),
-(7, 3, 6, 'Brylcreem (Red)', 300, 380, 118, 'Light glossy hold'),
-(8, 3, 1, 'Brylcreem (Green)', 105, 140, 400, 'Anti-dandruff'),
-(9, 1, 7, 'husa', 20, 65, 140, 'best shampoo'),
-(10, 2, 2, 'gogo', 15, 20, 10, 'ddddd');
+INSERT INTO `products` (`id`, `categoryId`, `supplierId`, `name`, `priceBuy`, `priceSell`, `quantity`, `place`, `description`) VALUES
+(1, 4, 1, 'Fridge', 165, 180, 47, '', 'Auto Matic Fridge'),
+(2, 4, 1, 'Washing Machine', 120, 150, 144, '', 'Auto-Matic Washing Machine'),
+(3, 1, 2, 'Iphone X', 590, 710, 33, '', 'Iphone X 64Go '),
+(4, 2, 2, 'Iphone 11 Pro Max', 1200, 1500, 38, '', 'Iphone 11 Pro Max 256 Go'),
+(5, 3, 3, 'Power Light', 70, 100, 93, '', 'Freshness Cream'),
+(6, 3, 3, 'Oil Clear', 160, 200, 294, '', 'Face Wash'),
+(7, 3, 6, 'Brylcreem (Red)', 300, 380, 118, '', 'Light glossy hold'),
+(8, 3, 1, 'Brylcreem (Green)', 105, 140, 400, '', 'Anti-dandruff'),
+(9, 1, 7, 'husa', 20, 65, 140, '', 'best shampoo'),
+(10, 4, 2, 'TV 55\"', 15, 20, 10, '', 'Apple TV 55\" '),
+(11, 4, 6, 'Washing machine 8Kg', 1000, 2000, 50, '', 'Washing machine 8Kg'),
+(12, 4, 1, 'LG 5KG', 120, 150, 15, 'A1', 'LG 5KG automatic ');
 
 -- --------------------------------------------------------
 
@@ -218,7 +222,8 @@ INSERT INTO `sales` (`id`, `invoiceId`, `productId`, `quantity`, `price`, `total
 (23, '1600175598948', 7, 10, 300, 3000, '2020-09-15 14:13:19'),
 (24, '1600183804988', 9, 10, 20, 200, '2020-09-15 16:30:05'),
 (25, '1600958997841', 10, 5, 20, 100, '2020-09-24 15:49:57'),
-(26, '1600968861315', 9, 10, 65, 650, '2020-09-24 18:34:21');
+(26, '1600968861315', 9, 10, 65, 650, '2020-09-24 18:34:21'),
+(27, '1601479911350', 11, 50, 2, 100, '2020-09-30 16:31:51');
 
 -- --------------------------------------------------------
 
@@ -318,7 +323,7 @@ ALTER TABLE `employees`
 -- AUTO_INCREMENT pour la table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT pour la table `purchases`
@@ -330,7 +335,7 @@ ALTER TABLE `purchases`
 -- AUTO_INCREMENT pour la table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT pour la table `suppliers`
